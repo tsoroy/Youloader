@@ -1,14 +1,13 @@
 from PyQt5 import uic
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QLineEdit, QDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QIcon
 
 import pafy
 import sys, os
 import threading as th
-# rrB13utjYV4
 
-path = os.path.normpath(os.getenv('USERPROFILE') + '/Downloads/')
+download_path = os.path.normpath(os.getenv('USERPROFILE') + '/Downloads/')
 
 def download():
     def callback(total, recvd, ratio, rate, eta):
@@ -25,7 +24,7 @@ def download():
         best = video.getbest()
 
         ui.label.setText('')
-        best.download(filepath=path, quiet=True, callback=callback)
+        best.download(filepath=download_path, quiet=True, callback=callback)
         ui.label.setText('Видео успешно загружено')
 
     except ValueError:
@@ -47,10 +46,10 @@ def download_thread():
 def initUI():
     ui.btn_download.clicked.connect(download_thread)
 
-    ui.btn_settings.setIcon(QIcon('settings.png'))
+    ui.btn_settings.setIcon(QIcon('img/settings.png'))
     # ui.btn_settings.clicked.connect(show_settings)
 
-    ui.btn_info.setIcon(QIcon('info.png'))
+    ui.btn_info.setIcon(QIcon('img/info.png'))
     # ui.btn_info.clicked.connect(dialog_info)
 
 def ICON_PATH(relative):
@@ -66,8 +65,9 @@ if __name__ == '__main__':
     # подключаем файл .ui для главного окна
     ui = uic.loadUi('main.ui', window)
     # подключаем файл стилей
-    window.setStyleSheet(open("main.qss", "r").read())
-    window.setWindowIcon(QIcon('icon.ico'))
+    window.setStyleSheet(open('main.css', 'r').read())
+    # задаем путь к иконке приложения
+    window.setWindowIcon(QIcon('img/icon.ico'))
     # отображаем окно
     window.show()
     # инициализируем дополнительные элементы GUI
