@@ -1,0 +1,28 @@
+#btn_download {
+	border: none;
+	border-radius: 10px;
+	background: #e01b24;
+	color: #ffffff;
+	font: 14px;
+}
+#btn_download:pressed {
+	background: #ed333b;
+}
+#btn_settings:pressed {
+	border: none;
+	background: #ffffff;
+}
+#btn_info:pressed {
+	border: none;
+	background: #ffffff;
+}
+#entry_url {
+	padding: 20px;
+	border-radius: 10px;
+	background: #f6f5f4;
+	font: 14px;
+}
+#label {
+	padding: 20px;
+	font: 14px;
+}
