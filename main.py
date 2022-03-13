@@ -65,7 +65,7 @@ if __name__ == '__main__':
     # подключаем файл .ui для главного окна
     ui = uic.loadUi('main.ui', window)
     # подключаем файл стилей
-    window.setStyleSheet(open('main.css', 'r').read())
+    window.setStyleSheet(open('main.qss', 'r').read())
     # задаем путь к иконке приложения
     window.setWindowIcon(QIcon('img/icon.ico'))
     # отображаем окно
